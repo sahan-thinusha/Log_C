@@ -1,4 +1,4 @@
-module log_C
+module logc
 
 go 1.23.6
 
