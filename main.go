@@ -54,7 +54,7 @@ func Init(apiBaseURL, serviceID, applicationID string) error {
 
 func (lc *LogCollector) AddLog(traceID, logLevel, message string) {
 	entry := LogEntry{
-		TimeStamp:     time.Now().UTC().Format(time.RFC3339),
+		TimeStamp:     time.Now().UTC().Format(time.RFC3339Nano),
 		TraceID:       traceID,
 		ServiceID:     lc.config.ServiceID,
 		ApplicationID: lc.config.ApplicationID,
@@ -68,7 +68,7 @@ func (lc *LogCollector) AddLogEntry(entry LogEntry) {
 	entry.ServiceID = lc.config.ServiceID
 	entry.ApplicationID = lc.config.ApplicationID
 	if entry.TimeStamp == "" {
-		entry.TimeStamp = time.Now().UTC().Format(time.RFC3339)
+		entry.TimeStamp = time.Now().UTC().Format(time.RFC3339Nano)
 	}
 	go lc.sendLog(entry)
 }
